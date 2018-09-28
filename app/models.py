@@ -189,7 +189,7 @@ class Cart(models.Model):
     # 选择数量
     number = models.IntegerField(default=1)
     # 是否选中
-    isselect = models.BooleanField(default=True)
+    isselect = models.BooleanField(default=False)
 
     class Meta:
         db_table = 'axf_cart'

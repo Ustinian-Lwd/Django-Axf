@@ -15,7 +15,6 @@ urlpatterns = [
 
     # 我的
     url(r'^mine/$', views.mine, name='mine'),
-    #
     # 注册
     url(r'^register', views.register, name='register'),
     # 登录
@@ -28,6 +27,15 @@ urlpatterns = [
     url(r'^cart/$', views.cart, name='cart'),
     # 添加购物车
     url(r'^addcart/$', views.addcart, name='addcart'),
+    # 删减购物车
+    url(r'^subcart/$', views.subcsrt, name='subcart'),
+    # 改变勾选的状态
+    url(r'^changecartstatus/$', views.changecartstatus, name='changecartstatus'),
+    # 全选状态
+    url(r'^changecartselect/$', views.changecartselect, name='changecartselect')
+
+
+
 
 
 

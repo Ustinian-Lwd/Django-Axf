@@ -3,7 +3,7 @@ import os
 import uuid
 
 from django.contrib.auth import logout
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
 from django.shortcuts import render, redirect
 from LwdAxf import settings
 from app.models import Wheel, Nav, Mustbuy, Shop, MainShow, Foodtypes, Goods, User, Cart
@@ -165,14 +165,29 @@ def market(request, categoryid, childid, sortid):
 
 
 
+##################### 购物车 ###################
+
+
 # 购物车
 def cart(request):
-    title = '购物车'
-    return render(request, 'cart/cart.html', context={
-        'title': title,
 
+    # 获取token
+    token = request.session.get('token')
 
-    })
+    # 登录才显示内容
+    if token:
+            # 根据token获取对应用户
+            user = User.objects.get(token=token)
+            # 根据用户，获取对应购物车 数据
+            carts = Cart.objects.filter(user=user).exclude(number=0)
+            data = {
+                'title': '购物车',
+                'carts': carts,
+            }
+            return render(request, 'cart/cart.html', context=data)
+    else:
+        return redirect('axf:login')
+
 
 # 添加到购物车
 def addcart(request):
@@ -235,10 +250,75 @@ def addcart(request):
     # return JsonResponse(responseData)
 
 
+# 删减数据
+def subcsrt(request):
+    # token
+    token = request.session.get('token')
+    # 获取对应的goodsid
+    goodsid = request.GET.get('goodsid')
+
+    #　用户
+    user = User.objects.filter(token=token)
+    # 商品
+    goods = Goods.objects.filter(pk=goodsid)
+    # 购物车
+    cart = Cart.objects.filter(goods=goods).filter(user=user).first()
+
+    cart.number = cart.number - 1
+    # 写入
+    cart.save()
+
+    responseData = {
+        'msg': '删减成功',
+        'status': '1',
+        'number': cart.number
+    }
+
+    return JsonResponse(responseData)
 
 
+# 改变商品勾选
+def changecartstatus(request):
+    # 获取cartid
+    cartid = request.GET.get('cartid')
+
+    cart = Cart.objects.get(pk=cartid)
+    # 取反
+    cart.isselect = not cart.isselect
+    cart.save()
+    # 传数据回去
+    responseData = {
+        'msg': '修改状态成功',
+        'status': '1',
+        'isselect': cart.isselect
+    }
+    return JsonResponse(responseData)
 
 
+# 改变全选状态
+def changecartselect(request):
+    # 获取isall
+    isall = request.GET.get('isall')
+
+    # 获取token
+    token = request.session.get('token')
+
+    # 用户
+    user = User.objects.get(token=token)
+
+    # 购物车
+    carts = Cart.objects.filter(user=user)
+
+    for cart in carts:
+        cart.isselect = isall
+        cart.save()
+
+    responseData = {
+        'status': '1',
+        'msg': '全选/取消全选 操作成功'
+    }
+
+    return JsonResponse(responseData)
 
 
 ########################## 我的　########################

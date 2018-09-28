@@ -10,3 +10,73 @@
 {% block title %}
     <title>{{ title }}</title>
 {% endblock %}
+
+
+{#  主题内容  #}
+{% block content %}
+    {#    购物车#}
+    <div class="cart">
+        <ul>
+            {% for cart in carts %}
+                <li class="goods">
+                    {#  勾选#}
+                    <div class="confirm-wrapper" isselect="{{ cart.isselect }}" cartid="{{ cart.id }}">
+                        {% if cart.isselect %}
+                            <span class="glyphicon glyphicon-ok"></span>
+                        {% else %}
+                            <span class="no"></span>
+                        {% endif %}
+                    </div>
+                    {#  商品内容#}
+                    <div class="content-wrapper">
+                        {# 　 商品图片　　　#}
+                        <div class="img">
+                            <img src="{{ cart.goods.productimg }}" alt="">
+                        </div>
+                        {#  商品详情#}
+                        <div class="detail">
+                            {#    商品名称#}
+                            <p class="name">{{ cart.goods.productlongname }}</p>
+                            {#    价格#}
+                            <p class="price" str_price="{{ cart.goods.price }}">￥ {{ cart.goods.price }}</p>
+                            {#    数量#}
+                            <p class="num" str_num="{{ cart.number }}">X {{ cart.number }}</p>
+                        </div>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+
+        {#    　　全选　金额以及下单　　#}
+        <div class="bill">
+            <div class="bill-left">
+                {#            全选#}
+                <div class="all" 　isall="false">
+                    <span class="no"></span>
+                    <b>全选</b>
+                </div>
+                {#            金额#}
+                <div class="total">
+                    <span>合计￥:</span>
+                    <b>0</b>
+                </div>
+
+            </div>
+            {#        下单#}
+            <div class="bill-right">
+                下单
+            </div>
+
+        </div>
+
+    </div>
+
+{% endblock %}
+
+
+
+{#引入ｊｓ#}
+{% block EXTJS %}
+    <script src="{% static 'cart/js/cart.js' %}"></script>
+{% endblock %}
+

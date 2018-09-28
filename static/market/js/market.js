@@ -195,7 +195,6 @@ $(function () {
 
 
 
-
 //    加号按钮操作
  $('.bt-wrapper>.glyphicon-plus').click(function () {
         // 获取商品ID
@@ -222,6 +221,32 @@ $(function () {
 
 
 
+//    减号按钮操作
+    $('.bt-wrapper>.glyphicon-minus').on('click', function () {
+        var goodsid = $(this).attr('goodsid')
+        var $that = $(this) // 将this保存起来，因为在ajax请求中，this指向有问题
+    //    发起ajax请求
+        $.get('/axf/subcart', {'goodsid': goodsid}, function (response) {
+            //测试联通
+            console.log(response)
+
+             // 登录
+            if(response['status'] == 1){
+            //    如果数量小于１
+            //    将减号隐藏
+                if( parseInt(response['number'] )<1){
+                    //将减号隐藏
+                    $that.hide()
+                //    将数量 0 隐藏
+                    $that.next().hide()
+                }
+                else{
+                    $that.next().html(response['number'])
+                }
+            }
+
+        })
+    })
 
 
 

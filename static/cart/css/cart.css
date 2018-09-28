@@ -1,7 +1,145 @@
-footer .cart span {
-	background: url(/static/base/img/cart1.png) no-repeat center;
-	background-size: 1.25rem;
+.cart{
+    height: 100%;
+    width: 100%;
 }
-footer .cart dd{
+
+/* 选中后的样式*/
+footer .cart span {
+    background-image: url(/static/base/img/cart1.png);
+}
+footer .cart dd {
     color: #ffd601;
+}
+
+
+
+/*没有勾选*/
+.cart .no{
+    display: inline-block;
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+    border: 1px solid grey;
+}
+/*勾选上了*/
+.cart .glyphicon-ok{
+    background: #ffd601;
+    color: white;
+    border-radius: 50%;
+    width: 1rem;
+    height: 1rem;
+    font-size: 1rem;
+}
+
+
+/*　　　购物车的渲染　　*/
+.cart ul{
+    /*background: lightpink;*/
+    padding-bottom: 2rem;
+}
+
+.cart ul li{
+    background: white;
+    padding: 0.5rem;
+    margin: 0.5rem;
+    border-radius: 0.7rem;
+
+    display: flex;
+    height: 6rem;
+}
+.cart ul li .confirm-wrapper{
+    width: 10%;
+    line-height: 6rem;
+    text-align: center;
+}
+
+.cart ul li .content-wrapper{
+    width: 90%;
+    display: flex;
+}
+.cart ul li .content-wrapper .img{
+    width: 30%;
+    line-height: 1;
+}
+.cart ul li .content-wrapper .img img{
+    width: 100%;
+}
+
+.cart ul li .content-wrapper .detail{
+    width: 70%;
+    font-size: 1rem;
+}
+.cart ul li .content-wrapper .detail .name{
+    width:100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.cart ul li .content-wrapper .detail .price{
+    color: indianred;
+    font-weight: 500;
+    margin: 0.3rem 0;
+}
+.cart ul li .content-wrapper .detail .num{
+    text-align: right;
+    padding-right: 0.3rem;
+}
+
+
+/*　　全选 金额　下单　　*/
+.cart .bill{
+    width:100%;
+    height: 2rem;
+    background: white;
+    position: fixed;
+    bottom: 2.75rem;
+    left: 0;
+    border-top: 1px solid #f0f0f0;
+    display: flex;
+    font-size: 0.9rem;
+    line-height: 2rem;
+}
+
+/*全选　　金额*/
+.cart .bill .bill-left{
+    width: 75%;
+    display: flex;
+    padding-left: 0.3rem;
+}
+
+/*　全选　*/
+.cart .bill .bill-left .all{
+    height: 100%;
+    width: 50%;
+}
+.cart .bill .bill-left .all span{
+    vertical-align: middle;
+}
+.cart .bill .bill-left .all b{
+    vertical-align: middle;
+    font-weight: normal;
+    padding-left: 0.3rem;
+}
+
+/*　金额　*/
+.cart .bill .bill-left .total{
+    width: 50%;
+    text-align: right;
+    padding-right: 1rem;
+}
+.cart .bill .bill-left .total span{
+    font-size: 0.8rem;
+}
+.cart .bill .bill-left .total b{
+    font-weight: normal;
+    color: #ffd601;
+}
+
+
+/*下单*/
+.cart .bill .bill-right{
+    width: 25%;
+    background: #ffd601;
+    text-align: center;
+    color: white;
 }
