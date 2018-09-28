@@ -1,6 +1,9 @@
 
 $(function () {
-    // 为了隐藏滚动条
+    // 隐藏滚动条
+    $('.home').width(innerWidth)
+
+
 
     //轮播图
     var swiper = new Swiper('#topSwiper', {

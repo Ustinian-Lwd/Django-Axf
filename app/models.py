@@ -157,6 +157,41 @@ class Goods(models.Model):
         db_table = 'axf_goods'
 
 
+# 用户　模型类
+class User(models.Model):
+    # 账号
+    account = models.CharField(max_length=20, unique=True)
+    # 密码
+    password = models.CharField(max_length=256)
+    # 名字
+    name = models.CharField(max_length=100)
+    # 电话
+    tel = models.CharField(max_length=20)
+    # 地址
+    address = models.CharField(max_length=256)
+    # 头像
+    img = models.CharField(max_length=100)
+    # 等级
+    rank = models.IntegerField(default=1)
+    # token
+    token = models.CharField(max_length=100)
 
+    class Meta:
+        db_table = 'axf_user'
+
+
+# 购物车 模型类
+class Cart(models.Model):
+    # 用户
+    user = models.ForeignKey(User)
+    # 商品
+    goods = models.ForeignKey(Goods)
+    # 选择数量
+    number = models.IntegerField(default=1)
+    # 是否选中
+    isselect = models.BooleanField(default=True)
+
+    class Meta:
+        db_table = 'axf_cart'
 
 

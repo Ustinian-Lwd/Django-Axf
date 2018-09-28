@@ -1,7 +1,112 @@
-footer .mine span {
-	background: url(/static/base/img/mine1.png) no-repeat center;
-	background-size: 1.25rem;
+.mine{
+    height: 100%;
+    width: 100%;
 }
-footer .mine dd{
+
+footer .mine span {
+    background-image: url(/static/base/img/mine1.png);
+}
+footer .mine dd {
     color: #ffd601;
+}
+
+.mine .user-wrapper{
+    height: 6rem;
+    background: sandybrown;
+    display: flex;
+    padding: 0.8rem;
+    position: relative;
+}
+.mine .user-wrapper .user-img{
+    width: 25%;
+    text-align: center;
+}
+.mine .user-wrapper .user-img img{
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+}
+.mine .user-wrapper .user-content{
+    width: 75%;
+    height: 100%;
+}
+.mine .user-wrapper .user-content p{
+    line-height: 2rem;
+}
+.mine .user-wrapper .user-content span{
+    padding-right: 0.4rem;
+}
+.mine .user-wrapper .user-content .register{
+    position: absolute;
+    right: 0.8rem;
+    bottom: 0.8rem;
+    font-size: 2rem;
+    font-weight: 700;
+    color: white;
+}
+
+
+
+
+/*收藏*/
+.mine .collect{
+    line-height: 2rem;
+    background: #f0e000;
+    text-align: center;
+}
+.mine .collect span,
+.mine .collect .glyphicon{
+    vertical-align: middle;
+}
+
+
+/**************全部订单以及底下的待付款*************/
+
+/*　选择－－待付款　*/
+.mine .other section{
+    background: white;
+    padding: 1rem 0;
+    margin: 0.5rem 0;
+    font-size: 1rem;
+}
+
+/* 全部订单 */
+.mine .other .my{
+    padding: 0 0.4rem;
+    height: 3rem;
+    line-height: 3rem;
+}
+.mine .other .my span{
+    float: left;
+}
+.mine .other .my a{
+    float: right;
+    vertical-align: middle;
+}
+
+
+/*　选择--待付款--　　*/
+.mine .other section ul{
+    display: flex;
+}
+.mine .other section ul li{
+    width: 25%;
+}
+.mine .other section ul li dl{
+    text-align: center;
+}
+.mine .other section ul li dl dt{
+    width:100%;
+    line-height: 2rem;
+}
+.mine .other section ul li dl dd{
+    font-size: 0.9rem;
+}
+
+
+.mine .other .quit{
+    text-align: center;
+}
+.mine .other .quit a{
+    color: grey;
 }

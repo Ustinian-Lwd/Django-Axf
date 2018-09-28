@@ -1,0 +1,176 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{#倒入样式#}
+{% block EXTCSS %}
+    <link rel="stylesheet" href="{% static 'mine/css/mine.css' %}">
+{% endblock %}
+
+
+{#    网页标题#}
+{% block title %}
+    <title>{{ title }}</title>
+{% endblock %}
+
+
+{% block content %}
+    <div class="mine">
+
+        {#    用户信息的展示#}
+        <div class="user-wrapper">
+            {#            用户图片#}
+            <div class="user-img">
+                <img src="{{ img }}">
+            </div>
+            {#用户信息#}
+            <div class="user-content">
+               <p>
+                   <a href="{% url 'axf:login' %}">
+                       <span class="glyphicon glyphicon-user"></span> {{ name }}
+                   </a>
+               </p>
+
+                <p>
+                    <a href="#">
+                        <span class="glyphicon glyphicon-certificate"></span>等级：{{ rank }}
+                    </a>
+
+                    <a href="{% url 'axf:register' %}" class="register"> 注册 </a>
+                </p>
+
+            </div>
+        </div>
+
+
+        {#        收藏#}
+        <div class="collect">
+            <a href="#">
+                <span class="glyphicon glyphicon-heart">商品收藏</span>
+            </a>
+        </div>
+        {#全部订单　　以及底下的工具栏#}
+        <div class="other">
+            {#            全部订单#}
+            <div class="my">
+                <span>我的订单</span>
+                <a href="#">
+                    查看全部订单 <i class="glyphicon glyphicon-chevron-right"></i>
+                </a>
+            </div>
+
+            {#            底下的工具栏#}
+            {#            第一行#}
+            <section>
+                {#               待付款#}
+                <ul>
+                    <li>
+                        <dl>
+                            <a href="#">
+                                <dt class="glyphicon glyphicon-usd"></dt>
+                                <dd>待付款</dd>
+                            </a>
+
+                        </dl>
+                    </li>
+
+                    {#                待收货#}
+
+                    <li>
+                        <dl>
+                            <a href="#">
+                                <dt class="glyphicon glyphicon-gift"></dt>
+                                <dd>待收货</dd>
+                            </a>
+
+                        </dl>
+                    </li>
+
+                    {#                待评价#}
+
+                    <li>
+                        <dl>
+                            <a href="#">
+                                <dt class="glyphicon glyphicon-edit"></dt>
+                                <dd>待评价</dd>
+                            </a>
+
+                        </dl>
+                    </li>
+
+
+                    {#              退款售后 #}
+
+                    <li>
+                        <dl>
+                            <a href="#">
+                                <dt class="glyphicon glyphicon-retweet"></dt>
+                                <dd>退款/售后</dd>
+                            </a>
+
+                        </dl>
+                    </li>
+                </ul>
+            </section>
+
+            {#            第二行#}
+            <section>
+                <ul>
+                    <li>
+                        <dl>
+                            <a href="#">
+                                <dt class=" glyphicon glyphicon-thumbs-up "></dt>
+                                <dd>优惠券</dd>
+                            </a>
+                        </dl>
+                    </li>
+
+
+                    <li>
+                        <dl>
+                            <a href="#">
+                                <dt class="glyphicon glyphicon-import"></dt>
+                                <dd>收货地址</dd>
+                            </a>
+
+                        </dl>
+                    </li>
+
+
+                    <li>
+                        <dl>
+                            <a href="#">
+                                <dt class="glyphicon glyphicon-earphone"></dt>
+                                <dd>客服/反馈</dd>
+                            </a>
+
+                        </dl>
+                    </li>
+
+
+                    <li>
+                        <dl>
+                            <a href="#">
+                                <dt class="glyphicon glyphicon-eye-open"></dt>
+                                <dd>关于我们</dd>
+                            </a>
+
+                        </dl>
+                    </li>
+                </ul>
+            </section>
+
+{#            退出按钮#}
+             {% if islogin %}
+            <section class="quit">
+                <a href="{% url 'axf:logout' %}">退出</a>
+            </section>
+        {% endif %}
+
+        </div>
+
+
+
+    </div>
+
+{% endblock %}
+

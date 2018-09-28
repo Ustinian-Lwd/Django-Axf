@@ -17,7 +17,7 @@ header {
 	 */
 	/* 高度要设置为44px，即 44 / 16 = 2.75*/
 	height: 2.75rem;
-	background: #ffd601;
+	background: deepskyblue;
 	color: white;
 	/*font-size: 25px;*/
 	font-size: 1.5625rem;
@@ -58,7 +58,7 @@ footer {
 	display: flex;
 	left: 0;
 	bottom: 0;
-	background: #fff;
+	background: skyblue;
 }
 
 footer a {

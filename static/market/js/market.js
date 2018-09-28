@@ -176,6 +176,55 @@ $(function () {
 
 
 
+//    减号默认隐藏
+    $('.bt-wrapper>.glyphicon-minus').hide()
+    $('.bt-wrapper>.num').hide()
+
+
+//什么时候显示减号？
+//    什么时候显示数量？
+//    当数量，至少为１的时候
+//    数量和减号出现
+     // each 遍历操作
+     $('.bt-wrapper>.num').each(function () {
+        if(parseInt($(this).html())){
+            $(this).show()
+            $(this).prev().show()
+        }
+    })
+
+
+
+
+//    加号按钮操作
+ $('.bt-wrapper>.glyphicon-plus').click(function () {
+        // 获取商品ID
+        var goodsid = $(this).attr('goodsid')
+        var $that = $(this) // 将this保存起来，因为在ajax请求中，this指向有问题
+
+        // 发起ajax请求
+        $.get('/axf/addcart/', {'goodsid':goodsid}, function (response) {
+
+            // 未登录
+            if (response['status'] == '-1'){
+                // 跳转到登录界面
+                window.open('/axf/login/', target="_self")
+            } else {    // 已登录
+
+                console.log(response)
+                //显示数量
+                $that.prev().html(response['number']).show()
+                // 登录状态下显示减号出来
+                $that.prev().prev().show()
+            }
+        })
+    })
+
+
+
+
+
+
 
 
 

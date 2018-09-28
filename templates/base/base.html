@@ -1,0 +1,82 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {#导入基本样式#}
+    <link rel="stylesheet" href="{% static 'base/css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'base/css/swiper.css' %}">
+    <link rel="stylesheet" href="{% static 'base/css/reset.css' %}">
+    <link rel="stylesheet" href="{% static 'base/css/base.css' %}">
+
+    {#   标题#}
+    {% block title %}
+    {% endblock %}
+
+    {#   样式表#}
+    {% block EXTCSS %}
+    {% endblock %}
+
+</head>
+
+<body>
+
+{# 头部#}
+{% block header %}
+    <header>爱鲜蜂</header>
+{% endblock %}
+
+
+{# 主体内容#}
+<div class="hidescroll">
+    <div id="content">
+        {% block content %}
+        {% endblock %}
+    </div>
+</div>
+
+{# 尾部#}
+{% block footer %}
+    <footer>
+        <a href="{% url 'axf:home' %}" class="home">
+            <dl>
+                <dt><span></span></dt>
+                <dd> 首页</dd>
+            </dl>
+        </a>
+        <a href="{% url 'axf:market' 104749 0 0 %}" class="market">
+            <dl>
+                <dt><span></span></dt>
+                <dd> 闪购超市</dd>
+            </dl>
+        </a>
+        <a href="{% url 'axf:cart' %}" class="cart">
+            <dl>
+                <dt><span></span></dt>
+                <dd> 购物车</dd>
+            </dl>
+        </a>
+        <a href="{% url 'axf:mine' %}" class="mine">
+            <dl>
+                <dt><span></span></dt>
+                <dd> 我的</dd>
+            </dl>
+        </a>
+    </footer>
+{% endblock %}
+
+{#导入js#}
+<script src="{% static 'base/js/jquery.js' %}"></script>
+<script src="{% static 'base/js/jquery.cookie.js' %}"></script>
+<script src="{% static 'base/js/bootstrap.js' %}"></script>
+<script src="{% static 'base/js/swiper.js' %}"></script>
+<script src="{% static 'base/js/base.js' %}"></script>
+
+{# JS#}
+{% block EXTJS %}
+{% endblock %}
+
+
+</body>
+</html>
