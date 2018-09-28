@@ -1,7 +1,231 @@
-footer .market span {
-	background: url(/static/base/img/market1.png) no-repeat center;
-	background-size: 1.25rem;
+.market{
+    height: 100%;
+    width: 100%;
+    position: relative;
 }
-footer .market dd{
+
+/*图片的切换*/
+/*首页-闪购-购物车-我的*/
+footer .market span {
+    background-image: url(/static/base/img/market1.png);
+}
+footer .market dd {
     color: #ffd601;
 }
+
+
+
+/*侧边栏*/
+.market .type-slider{
+    width: 4rem;
+    height: 100%;
+    background: #fafafa;
+    overflow: hidden;
+    font-size: 0.8rem;
+    overflow: hidden;
+    position: absolute;
+    z-index: 9;
+}
+.market .type-slider ul{
+}
+.market .type-slider ul li{
+    list-style: none;
+    text-align: center;
+    border-bottom: 1px solid #e0e0e0;
+    width:100%;
+    line-height: 2.4rem;
+    position: relative;
+}
+.market .type-slider ul li span{
+    background: #ffd601;
+    width: 0.2rem;
+    height: 1rem;
+    position: absolute;
+    left:0;
+    top: 0.6rem;
+    display: none;
+}
+.market .type-slider ul .active span{
+    display: block;
+}
+.market .type-slider ul li a{}
+
+
+
+/* 顶部通栏*/
+.market  nav{
+    width: 100%;
+    height: 2rem;
+    padding-left: 4rem;
+    line-height: 2rem;
+    text-align: center;
+    background: #fafafa;
+    /*border-left: 1px solid #e0e0e0;*/
+    position: relative;
+    z-index: +1;
+}
+.market nav ul{
+    display: flex;
+    border-left: 1px solid #e0e0e0;
+}
+.market nav ul li{
+    width: 50%;
+}
+.market nav ul li span{
+    font-size: 0.8rem;
+}
+.market nav ul li span i{
+    margin-left: 0.4rem;
+}
+
+
+
+/* 主体商品列表*/
+.market .main-content{
+    width: 100%;
+    height: 100%;
+    padding-left: 4rem;
+    padding-top: 2rem;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.market .main-content .content-wrapper{
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+}
+.market .main-content .content-wrapper ul{
+
+}
+.market .main-content .content-wrapper ul li{
+    background: white;
+    border-bottom: 1px solid #e0e0e0;
+    margin: 0.7rem;
+    border-radius: 0.2rem;
+    position: relative;
+}
+.market .main-content .content-wrapper ul li a{
+    display: block;
+    height: 5rem;
+}
+
+
+
+/*商品的展示*/
+/*图片*/
+.market .main-content .content-wrapper ul li a .goods-img{
+    display: block;
+    width: 33.3%;
+    float: left;
+}
+/*商品信息  */
+.market .main-content .content-wrapper ul li a .goods-info{
+    width: 66.6%;
+    float: left;
+    font-size: 0.625rem;
+}
+/*商品名字*/
+.market .main-content .content-wrapper ul li a .goods-info .name{
+    margin: 0.5rem 0 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-weight: 600;
+    font-size: 0.7rem;
+}
+/*商品详情*/
+.market .main-content .content-wrapper ul li a .goods-info .detailtag{
+    margin: 0.2rem 0;
+}
+/*是否为精选*/
+.market .main-content .content-wrapper ul li a .goods-info .detailtag .xf{
+    background: red;
+    color: white;
+    border-radius: 0.2rem;
+    margin-right: 0.2rem;
+    padding: 0.1rem;
+}
+/**/
+.market .main-content .content-wrapper ul li a .goods-info .detailtag i{
+    background: red;
+    color: white;
+    border-radius: 0.2rem;
+}
+/*是否是每一送一*/
+.market .main-content .content-wrapper ul li a .goods-info .specifics{
+    color: grey;
+}
+/*价格*/
+.market .main-content .content-wrapper ul li a .goods-info .price{
+    margin: 0.2rem 0;
+}
+/*现在的价格*/
+.market .main-content .content-wrapper ul li a .goods-info .price .now-price{
+    color: red;
+    margin-right: 0.2rem;
+    font-size: 0.7rem;
+    font-weight: 600;
+}
+/*超市价格*/
+.market .main-content .content-wrapper ul li a .goods-info .price .market-price{
+    color: grey;
+    text-decoration: line-through;
+}
+
+
+
+/*按钮设置  加号  减号*/
+.market .main-content .content-wrapper ul li .bt-wrapper{
+    position: absolute;
+    right: 0.2rem;
+    bottom: 0;
+    width: 28%;
+    height: 1.5rem;
+    line-height: 1.5rem;
+    font-size: 0.8rem;
+    text-align: right;
+}
+.market .main-content .content-wrapper ul li .bt-wrapper .glyphicon{
+    background: red;
+    color: white;
+    border-radius: 50%;
+    padding: 0.1rem;
+}
+.market .main-content .content-wrapper ul li .bt-wrapper .num{
+    margin: 0.2rem;
+}
+
+
+
+
+
+
+
+/* 分类中的子类及排序*/
+.market .main-content .bounce-view{
+    width: 100%;
+    height: 100%;
+    padding-left: 4rem;
+    padding-top: 2rem;
+    background: rgba(0, 0, 0, 0.5);
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    display: none;
+}
+.market .main-content .bounce-view .bounce-wrapper{
+    background: white;
+    padding: 0.5rem;
+}
+.market .main-content .bounce-view .bounce-wrapper a{
+    border: 1px solid #e0e0e0;
+    padding: 0.2rem 0.3rem;
+    border-radius: 0.2rem;
+    font-size: 0.625rem;
+    margin-top: 0.2rem;
+    margin-left: 0.2rem;
+}
+
+

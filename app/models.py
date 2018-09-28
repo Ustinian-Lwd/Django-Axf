@@ -15,6 +15,9 @@ class Base(models.Model):
         return self.name
 
 
+
+######################## [首页] ########################
+
 # 轮播图
 class Wheel(Base):
     class Meta:
@@ -93,5 +96,67 @@ class MainShow(models.Model):
 
     class Meta:
         db_table='axf_mainshow'
+
+
+
+
+######################## [闪购] ########################
+
+# 商品分类  比如侧边栏等以及顶部栏中全部分类的数据
+class Foodtypes(models.Model):
+    # 分类id
+    typeid = models.CharField(max_length=10)
+    # 分类名称--热销榜-----
+    typename = models.CharField(max_length=100)
+    # 子类名称--
+    childtypenames = models.CharField(max_length=200)
+    # 分类排序(显示的先后顺序)
+    typesort = models.IntegerField()
+
+    class Meta:
+        db_table = 'axf_foodtypes'
+
+    def __str__(self):
+        return self.typename
+
+
+# 全部商品即需要显示的内容
+class Goods(models.Model):
+    # 商品id
+    productid = models.CharField(max_length=10)
+    # 商品图片
+    productimg = models.CharField(max_length=255)
+    # 商品名称--简称
+    productname = models.CharField(max_length=100)
+    # 商品长名字--一大串
+    productlongname = models.CharField(max_length=255)
+    # 精选--是否为精选,有则显示,无则
+    isxf = models.BooleanField(default=False)
+    # 买一送一
+    pmdesc = models.BooleanField(default=False)
+    # 规格--例如牛奶多少毫升
+    specifics = models.BooleanField(max_length=100)
+    # 价格
+    price = models.FloatField()
+    # 超市价格
+    marketprice = models.FloatField()
+    # 分类id
+    categoryid = models.CharField(max_length=10)
+    # 子类id
+    childcid = models.CharField(max_length=10)
+    # 子类名字
+    childcidname = models.CharField(max_length=50)
+    # 详情id
+    dealerid = models.CharField(max_length=10)
+    # 库存量
+    storenums = models.IntegerField()
+    # 销售量
+    productnum = models.IntegerField()
+
+    class Meta:
+        db_table = 'axf_goods'
+
+
+
 
 

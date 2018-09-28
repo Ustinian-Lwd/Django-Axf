@@ -4,11 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    {#导入基本样式#}
     <link rel="stylesheet" href="{% static 'base/css/bootstrap.css' %}">
     <link rel="stylesheet" href="{% static 'base/css/swiper.css' %}">
     <link rel="stylesheet" href="{% static 'base/css/reset.css' %}">
     <link rel="stylesheet" href="{% static 'base/css/base.css' %}">
+
     {#   标题#}
     {% block title %}
     {% endblock %}
@@ -16,6 +17,7 @@
     {#   样式表#}
     {% block EXTCSS %}
     {% endblock %}
+
 </head>
 
 <body>
@@ -43,10 +45,10 @@
                 <dd> 首页</dd>
             </dl>
         </a>
-        <a href="{% url 'axf:market' %}" class="market">
+        <a href="{% url 'axf:market' 104749 0 0 %}" class="market">
             <dl>
                 <dt><span></span></dt>
-                <dd> 闪购超市 </dd>
+                <dd> 闪购超市</dd>
             </dl>
         </a>
         <a href="{% url 'axf:cart' %}" class="cart">
@@ -58,14 +60,15 @@
         <a href="{% url 'axf:mine' %}" class="mine">
             <dl>
                 <dt><span></span></dt>
-                <dd> 我的 </dd>
+                <dd> 我的</dd>
             </dl>
         </a>
     </footer>
 {% endblock %}
 
-
+{#导入js#}
 <script src="{% static 'base/js/jquery.js' %}"></script>
+<script src="{% static 'base/js/jquery.cookie.js' %}"></script>
 <script src="{% static 'base/js/bootstrap.js' %}"></script>
 <script src="{% static 'base/js/swiper.js' %}"></script>
 <script src="{% static 'base/js/base.js' %}"></script>

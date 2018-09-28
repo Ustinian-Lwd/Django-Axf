@@ -9,7 +9,7 @@ urlpatterns = [
     # 首页
     url(r'^home/$', views.home, name='home'),
     # 闪购
-    url(r'^market/$', views.market, name='market'),
+    url(r'^market/(\d+)/(\d+)/(\d+)/$', views.market, name='market'),
     # 购物车
     url(r'^cart/$', views.cart, name='cart'),
     # 我的
