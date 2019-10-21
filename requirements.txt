@@ -44,7 +44,7 @@ unicodecsv==0.14.1
 urllib3==1.23
 uWSGI==2.0.17.1
 visitor==0.1.3
-Werkzeug==0.14.1
+Werkzeug==0.15.3
 WTForms==2.2.1
 xlrd==1.1.0
 xlwt==1.3.0
